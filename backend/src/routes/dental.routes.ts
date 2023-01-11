@@ -11,7 +11,7 @@ import {
     getSummaryTreatmentById,
     getSummaryTreatment,
     getHistory,
-    getTreatments,
+    getTreatmentsById,
 } from "../controllers/dental.controller";
 
 const router = Router();
@@ -24,10 +24,8 @@ router.delete("/dental/:id", deleteDental);
 
 router.get("/dental/report/:rut", getDentalByUser);
 router.get("/dental/report/treatments/:rut", getTreatmentsByUser);
-router.get("/dental/report/treatments/", getTreatments);
 router.get("/dental/report/history/:rut", getHistoryByUser);
-router.get("/dental/report/history/", getHistory);
 router.get("/dental/report/summary/:id", getSummaryTreatmentById);
-router.get("/dental/report/summary/", getSummaryTreatment);
+
 
 export default router;

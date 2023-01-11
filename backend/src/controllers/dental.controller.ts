@@ -187,24 +187,25 @@ export const getTreatmentsByDate = async (req: Request, res: Response) => {
     }
 };
 
-export const getTreatments = async (req: Request, res: Response) => {
+export const getTreatmentsById = async (req: Request, res: Response) => {
+    //Get treatments by id using id as parameter in the url, and send Nombre, Apellido, Nombre del tratamiento, Fecha to the frontend
+    //Usign getRepository we can use the query builder to make the query
     try {
-        //Get treatments for every user, and send Nombre, Apellido, Nombre del tratamiento, Fecha to the frontend
-        //Usign getRepository we can use the query builder to make the query
-        const Treatment = await Dental.createQueryBuilder("dental")
+        const id = parseInt(req.params.id);
+        const Treatment_Id = await Dental.createQueryBuilder("dental")
             .select("user.name", "name")
             .addSelect("user.fatherLastname", "fatherLastname")
             .addSelect("treatment.name", "nameTreatment")
             .addSelect("dental.date", "date")
             .innerJoin("dental.User", "user")
             .innerJoin("dental.Treatment", "treatment")
-            .addGroupBy("dental.date")
+            .where("dental.id = :id", { id: id })
             .getRawMany();
-        res.status(200).json(Treatment);
-    } catch (error) {
+        res.status(200).json(Treatment_Id);
+    }
+    catch (error) {
         if (error instanceof Error) {
             console.log(error.message);
-
             res.status(500).json({ message: "Something goes wrong" });
         } else {
             res.status(500).json({ message: "Something goes wrong" });
@@ -220,7 +221,6 @@ export const getHistoryByUser = async (req: Request, res: Response) => {
         const Treatment_User = await Dental.createQueryBuilder("dental")
             .select("user.name", "name")
             .addSelect("user.fatherLastname", "fatherLastname")
-            .addSelect("treatment.name", "nameTreatment")
             .addSelect("dental.date", "date")
             .innerJoin("dental.User", "user")
             .where("user.rut = :rut", { rut: rut })
@@ -248,7 +248,6 @@ export const getHistoryByDate = async (req: Request, res: Response) => {
         const Treatment_Date = await Dental.createQueryBuilder("dental")
             .select("user.name", "name")
             .addSelect("user.fatherLastname", "fatherLastname")
-            .addSelect("treatment.name", "nameTreatment")
             .addSelect("dental.date", "date")
             .innerJoin("dental.User", "user")
             .where("dental.date = :date", { date: date })
@@ -272,7 +271,6 @@ export const getHistory = async (req: Request, res: Response) => {
         const Treatment_Date = await Dental.createQueryBuilder("dental")
             .select("user.name", "name")
             .addSelect("user.fatherLastname", "fatherLastname")
-            .addSelect("treatment.name", "nameTreatment")
             .addSelect("dental.date", "date")
             .innerJoin("dental.User", "user")
             .orderBy("dental.date", "DESC")
