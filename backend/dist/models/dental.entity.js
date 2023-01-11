@@ -16,7 +16,7 @@ const treatment_entity_1 = require("./treatment.entity");
 let Dental = class Dental extends typeorm_1.BaseEntity {
 };
 __decorate([
-    (0, typeorm_1.PrimaryColumn)({ type: "int", nullable: false }),
+    (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
 ], Dental.prototype, "id", void 0);
 __decorate([
@@ -28,11 +28,11 @@ __decorate([
     __metadata("design:type", String)
 ], Dental.prototype, "description", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: "varchar", length: 50, nullable: false }),
+    (0, typeorm_1.Column)({ type: "int", nullable: false }),
     __metadata("design:type", Number)
 ], Dental.prototype, "amount", void 0);
 __decorate([
-    (0, typeorm_1.ManyToOne)(() => treatment_entity_1.Treatment, treatment => treatment.id),
+    (0, typeorm_1.ManyToOne)(() => treatment_entity_1.Treatment, treatment => treatment.id, { nullable: true }),
     __metadata("design:type", treatment_entity_1.Treatment)
 ], Dental.prototype, "Treatment", void 0);
 __decorate([

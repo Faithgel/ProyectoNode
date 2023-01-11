@@ -51,8 +51,15 @@ const createUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     user.mail = mail;
     user.password = password;
     try {
-        yield user.save();
-        res.status(200).json({ message: "User created" });
+        const role = yield role_entity_1.Role.findOneBy({ name: "user" });
+        if (role) {
+            user.role = role;
+            yield user.save();
+            res.status(200).json({ message: "User created" });
+        }
+        else {
+            res.status(400).json({ message: "Role not found" });
+        }
     }
     catch (error) {
         if (error instanceof Error) {

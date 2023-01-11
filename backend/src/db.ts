@@ -2,7 +2,8 @@ import { DataSource } from "typeorm";
 import * as dotenv from "dotenv";
 
 //Using the dotenv in src aka the same folder which contains this file using 
-dotenv.config();
+dotenv.config( { path: __dirname + "/.env" } );
+
 
 const port = process.env.DB_PORT ? parseInt(process.env.DB_PORT) : 5432;
 

@@ -20,6 +20,7 @@ function main() {
         try {
             yield db_1.AppDataSource.initialize();
             console.log("Database connected");
+            console.log("dotenv: " + __dirname);
             app_1.default.listen(3000);
             console.log("Server on port 3000");
         }

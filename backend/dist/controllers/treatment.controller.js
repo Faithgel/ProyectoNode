@@ -50,8 +50,8 @@ const createTreatment = (req, res) => __awaiter(void 0, void 0, void 0, function
 exports.createTreatment = createTreatment;
 const getSpecificTreatment = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { id } = req.params;
-        const treatment = yield treatment_entity_1.Treatment.findOneBy({ id: parseInt(id) });
+        const { nombre } = req.params;
+        const treatment = yield treatment_entity_1.Treatment.findOneBy({ name: nombre });
         res.status(200).json({ treatment });
     }
     catch (error) {

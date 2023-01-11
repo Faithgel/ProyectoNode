@@ -27,7 +27,7 @@ exports.AppDataSource = void 0;
 const typeorm_1 = require("typeorm");
 const dotenv = __importStar(require("dotenv"));
 //Using the dotenv in src aka the same folder which contains this file using 
-dotenv.config();
+dotenv.config({ path: __dirname + "/.env" });
 const port = process.env.DB_PORT ? parseInt(process.env.DB_PORT) : 5432;
 exports.AppDataSource = new typeorm_1.DataSource({
     type: "mysql",

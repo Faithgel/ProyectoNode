@@ -28,7 +28,7 @@ export const loginUser = async (req: Request, res: Response) => {
 
 export const createUser = async (req: Request, res: Response) => {
     // Extract the username from the request body
-    const { rut, name, fatherLastname, motherLastName, mail, password } =
+    const { rut, name, fatherLastname, motherLastName, mail, password, rolename, address } =
         req.body;
     const user = User.create();
     user.rut = rut;
@@ -37,9 +37,10 @@ export const createUser = async (req: Request, res: Response) => {
     user.motherLastName = motherLastName;
     user.mail = mail;
     user.password = password;
+    user.address = address;
 
     try {
-        const role = await Role.findOneBy({ name: "user" });
+        const role = await Role.findOneBy({ name: rolename });
         if (role) {
             user.role = role;
             await user.save();
@@ -123,7 +124,7 @@ export const updateUser = async (req: Request, res: Response) => {
             user.motherLastName = req.body.motherLastName;
             user.mail = req.body.mail;
             user.password = req.body.password;
-
+            user.address = req.body.address;
             await user.save();
             res.status(200).json({ message: "User updated" });
         } else {
