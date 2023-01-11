@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/2750/2750657.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atenciones</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.2/js/bootstrap.bundle.min.js">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+        <link rel="stylesheet" href="css/styleAt.css">
+
+    <style>
+        img{
+            width: 4em;
+        }
+        span{
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+          <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+            <img src="https://www.transparentpng.com/thumb/tooth/g9vqBC-lougheed-village-dentist-drjill-lee.png">
+            <h1 class="titulo">Clínica Dental<span> Sonrisa Feliz</span></h1>
+          </a>
+    
+          <ul class="nav nav-pills">
+            
+            <li class="nav-item"><a href="../Dentista/crudDentista.html" class="nav-link "  aria-current="page">Dentistas</a></li>
+            <li class="nav-item"><a href="../Cliente/Cliente.html" class="nav-link">Clientes</a></li>
+            <li class="nav-item"><a href="../Tratamiento/index.html" class="nav-link">Tratamientos</a></li>
+            <li class="nav-item"><a href="../Atenciones/atenciones.html" class="nav-link active">Atencion</a></li>
+            <li class="nav-item"><a href="../Reporte/Reporte.html" class="nav-link  ">Reportes</a></li>
+          </ul>
+        </header>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-7">
+                <h1><b>Atenciones Dentales</b></h1>
+            </div>
+            <br>
+            <div class="col-5">
+                <!-- Botón para ELIMINAR una atención-->
+                <br>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                        data-bs-target="#eliminarAtencion">
+                        Eliminar atención
+                    </button>
+                    <!-- Botón para editar una atención-->
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                        data-bs-target="#editarAtencion">
+                        Editar atención
+                    </button>
+
+                    <!-- Botón para agregar una nueva atención-->
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                        data-bs-target="#ingresarAtencion">
+                        Agregar atención
+                    </button>
+
+                </div>
+                
+                <!-- Modal -->
+                <!-- Tabla para ingresar los datos de la nueva atención-->
+                <div class="modal fade" id="ingresarAtencion" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Agregar Atención Dental</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+
+                                <form method="POST" action="">
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">RUT del cliente</label>
+                                        <input name="" type="text" class="form-control">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">Tipo de atención</label>
+                                        <input name="" type="text" class="form-control">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">Valor de atención</label>
+                                        <input name="" type="text" class="form-control">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">Fecha de atención</label>
+                                        <input name="" type="date" class="form-control">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">ID de atención</label>
+                                        <input name="" type="text" class="form-control">
+                                    </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="submit" value="Submit" class="btn btn-primary">Confirmar</button>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="eliminarAtencion" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Eliminar</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="DELETE" action="">
+                                <div class="mb-3">
+                                    <label for="" class="form-label">ID de atención</label>
+                                    <input name="" type="text" class="form-control">
+                                </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="submit" value="Submit" class="btn btn-primary">Eliminar</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="editarAtencion" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Editar atención</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <form method="POST" action="">
+                            <div class="mb-3">
+                                <label for="" class="form-label">Modificar Rut del cliente</label>
+                                <input name="" type="text" class="form-control">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="" class="form-label">Tipo de atención</label>
+                                <input name="" type="text" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Fecha de atención</label>
+                                <input name="" type="date" class="form-control">
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="submit" value="Submit" class="btn btn-primary">Actualizar campos</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">RUT del cliente</th>
+                    <th scope="col">Tratamiento</th>
+                    <th scope="col">Fecha atención</th>
+                    <th scope="col">ID atención</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <!-- EJEMPLO DE COMO SE MOSTRARÍAN LOS DATOS -->
+                    <th scope="row">20.123.123-3</th>
+                    <td>Endodoncia</td>
+                    <td>23-11-2022</td>
+                    <td>039</td>
+
+                </tr>
+            </tbody>
+
+        </table>
+
+    </div>
+        
+        <!-- Fin de tabla para agregar mascotas -->
+        <!-- A partir de acá se accede a la base de datos, primero modificar una estructura de tabla-->
+        <!-- Tabla de Base de Datos -->
+       
+        
+      </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+        </script>
+
+
+
+
+</body>
+
+</html>

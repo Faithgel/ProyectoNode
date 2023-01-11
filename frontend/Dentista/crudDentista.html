@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.2/js/bootstrap.bundle.min.js">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+  <link href="css/styleCrudDentista.css" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/3467/3467830.png" type="image/x-icon">
+ 
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  <title>Dentistas</title>
+
+
+</head>
+
+<body>
+  <div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+        <img src="https://www.transparentpng.com/thumb/tooth/g9vqBC-lougheed-village-dentist-drjill-lee.png">
+        <h1 class="titulo">Clínica Dental<span> Sonrisa Feliz</span></h1>
+      </a>
+
+      <ul class="nav nav-pills">
+        
+        <li class="nav-item"><a href="../Dentista/crudDentista.html" class="nav-link active"  aria-current="page">Dentistas</a></li>
+        <li class="nav-item"><a href="../Cliente/Cliente.html" class="nav-link">Clientes</a></li>
+        <li class="nav-item"><a href="../Tratamiento/index.html" class="nav-link">Tratamientos</a></li>
+        <li class="nav-item"><a href="../Atenciones/atenciones.html" class="nav-link">Atencion</a></li>
+        <li class="nav-item"><a href="../Reporte/Reporte.html" class="nav-link ">Reportes</a></li>
+      </ul>
+    </header>
+  </div>
+
+
+
+  <br>
+
+  <div class="container-xl">
+    <div class="table-responsive">
+      <div class="table-wrapper">
+        <div class="table-title">
+          <div class="row">
+            <div class="col-sm-6">
+              <h2><b>Dentistas</b></h2>
+            </div>
+            <div class="col-sm-6">
+
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCrearDentista">
+                Añadir Dentista
+              </button>
+            </div>
+          </div>
+        </div>
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th>
+              <th>N°</th>
+              <th>Nombre</th>
+              <th>Correo</th>
+              <th>Dirección</th>
+              <th>Teléfono</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+              <td>1</td>
+              <td>Thomas Hardy</td>
+              <td>thomashardy@mail.com</td>
+              <td>89 Chiaroscuro Rd, Portland, USA</td>
+              <td>(171) 555-2222</td>
+              <td>
+                <a  data-bs-toggle="modal" data-bs-target="#modalEditarDentista" class="edit"><i class="fas fa-edit"></i></a>
+                <a data-bs-toggle="modal" data-bs-target="#modalEliminarDentista" class="delete"><i class="fas fa-trash"></i></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+<!-- Crear -->
+  <div class="modal fade" id="modalCrearDentista" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Dentista</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group mb-3">
+              <label class="label">Nombre Dentista</label>
+              <input type="text" class="form-control" placeholder="Nombre de usuario">
+            </div>
+            <div class="form-group mb-3">
+              <label class="label">Correo electrónico</label>
+              <input type="text" class="form-control" placeholder="Correo electronico">
+            </div>
+            <div class="form-group mb-3">
+              <label class="label">Dirección</label>
+              <input type="text" class="form-control" placeholder="Dirección">
+            </div>
+            <div class="form-group mb-3">
+              <label class="label">Teléfono</label>
+              <input type="text" class="form-control" placeholder="Teléfono">
+            </div>
+
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Crear</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Editar -->
+  <div class="modal fade" id="modalEditarDentista" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Dentista</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group mb-3">
+              <label class="label">Nombre Dentista</label>
+              <input type="text" class="form-control" placeholder="Nombre de usuario">
+            </div>
+            <div class="form-group mb-3">
+              <label class="label">Correo electrónico</label>
+              <input type="text" class="form-control" placeholder="Correo electronico">
+            </div>
+            <div class="form-group mb-3">
+              <label class="label">Dirección</label>
+              <input type="text" class="form-control" placeholder="Dirección">
+            </div>
+            <div class="form-group mb-3">
+              <label class="label">Teléfono</label>
+              <input type="text" class="form-control" placeholder="Teléfono">
+            </div>
+
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Editar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Eliminar -->
+  <div class="modal fade" id="modalEliminarDentista" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar Dentista</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ¿Estás seguro de eliminar?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

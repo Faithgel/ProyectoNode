@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/stylesRep.css">
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/2586/2586859.png" type="image/x-icon">
+ 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <title>Reporte</title>
+</head>
+<body>
+    <div class="back">
+        <div class="container">
+            <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+              <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+                <img src="https://www.transparentpng.com/thumb/tooth/g9vqBC-lougheed-village-dentist-drjill-lee.png">
+                <h1 class="titulo">Clínica Dental<span> Sonrisa Feliz</span></h1>
+              </a>
+        
+              <ul class="nav nav-pills">
+                
+                <li class="nav-item"><a href="../Dentista/crudDentista.html" class="nav-link "  aria-current="page">Dentistas</a></li>
+                <li class="nav-item"><a href="../Cliente/Cliente.html" class="nav-link">Clientes</a></li>
+                <li class="nav-item"><a href="../Tratamiento/index.html" class="nav-link">Tratamientos</a></li>
+                <li class="nav-item"><a href="../Atenciones/atenciones.html" class="nav-link ">Atencion</a></li>
+                <li class="nav-item"><a href="../Reporte/Reporte.html" class="nav-link active  ">Reportes</a></li>
+              </ul>
+            </header>
+        </div>
+    
+    
+    
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Reportes disponibles</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <tbody>
+                          <tr>
+                            <td  colspan="2"><h5>Tratamiento por Cliente</h5></td>
+                            <td> 
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                    <button class="btn btn-success me-md-2" type="button" 
+                                    data-bs-toggle="collapse" data-bs-target="#clientesTratamientos" aria-expanded="false" aria-controls="clientesTratamientos">
+                                        <i class="bi bi-info-circle"> </i>Expandir
+                                    </button>
+                                    <button class="btn btn-info me-md-2" type="button">
+                                        <i class="bi bi-file-earmark-arrow-down"> </i>Descargar
+                                    </button>
+                                </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td  colspan="2"><h5>Historial de Citas</h5></td>
+                            <td> 
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                    <button class="btn btn-success me-md-2" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#historialCitas" aria-expanded="false" aria-controls="historialCitas">
+                                        <i class="bi bi-info-circle"> </i>Expandir
+                                    </button>
+                                    <button class="btn btn-info me-md-2" type="button"><i class="bi bi-file-earmark-arrow-down"> </i>Descargar</button>
+                                </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td  colspan="2"><h5>Reporte Tratamientos</h5></td>
+                            <td> 
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                    <button class="btn btn-success me-md-2" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#tratamiento" aria-expanded="false" aria-controls="tratamiento">
+                                        <i class="bi bi-info-circle"> </i>Expandir
+                                    </button>
+                                    <button class="btn btn-info me-md-2" type="button"><i class="bi bi-file-earmark-arrow-down"> </i>Descargar</button>
+                                </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+        
+            </div>
+    
+            <br>
+    
+            <div class="collapse" id="clientesTratamientos">
+                <div class="card">               
+                    <div class="card-body">
+                        <h1 class="card-title">Tratamientos por cliente</h1>
+                        <div class="row flex-row-reverse">
+                            <div class="col-4">
+                                <div class="input-group rounded">
+                                    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                                    <span class="input-group-text border-0" id="search-addon">
+                                      <i class="fas fa-search"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <h5>Alejandro Perez</h5>
+                        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Tratamiento</th>
+                                        <th>Fecha</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Limpieza Dental</td>
+                                        <td>12/05/2021</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Limpieza Dental</td>
+                                        <td>12/06/2021</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ortodoncia</td>
+                                        <td>24/11/2021</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <br>
+                        <h5>Sandra Jara</h5>
+                        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Tratamiento</th>
+                                        <th>Fecha</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Limpieza Dental</td>
+                                        <td>12/05/2021</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Limpieza Dental</td>
+                                        <td>12/06/2021</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ortodoncia</td>
+                                        <td>24/11/2021</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                            
+                
+                        
+                    </div>
+                
+            </div>
+            </div>
+    
+            <br>
+    
+            <div class="collapse" id="historialCitas">
+                <div class="card">
+               
+                    <div class="card-body">
+                        <h1 class="card-title">Historial de Citas</h1>
+                        <div class="row flex-row-reverse">
+                            <div class="col-4">
+                                <div class="input-group rounded">
+                                    <input type="date" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                                    <span class="input-group-text border-0" id="search-addon">
+                                      <i class="fas fa-search"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Cliente</th>
+                                        <th>Fecha</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Juan Salas</td>
+                                        <td>21/02/2021</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Nicolás Muñoz</td>
+                                        <td>24/02/2021</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Paz Gonzales</td>
+                                        <td>01/03/2021</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Daniela Neira</td>
+                                        <td>08/03/2021</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+    
+                    </div>
+                
+            </div>
+            </div>
+    
+            <div class="collapse" id="tratamiento">
+                <div class="card">
+               
+                    <div class="card-body">
+                        <h1 class="card-title">Reporte Tratamientos</h1>
+                        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Tratamientos</th>
+                                        <th>Cantidad</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Ortodoncia</td>
+                                        <td>23</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Limpieza Dental</td>
+                                        <td>54</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+    
+                    </div>
+                
+            </div>
+            </div>
+    
+            
+        </div>
+        
+
+    </div>
+    
+    
+    
+
+</body>
+</html>
