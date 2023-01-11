@@ -268,14 +268,20 @@ export const getHistory = async (req: Request, res: Response) => {
     //Get history aka all dental but order by date, and send Nombre, Apellido, Nombre del tratamiento, Fecha to the frontend
     //Usign getRepository we can use the query builder to make the query
     try {
-        const Treatment_Date = await Dental.createQueryBuilder("dental")
+        const users = await User.find();
+        const history = [];
+        for(let i = 0 ; i < users.length ; i++){
+            const dental = await Dental.createQueryBuilder("dental")
             .select("user.name", "name")
             .addSelect("user.fatherLastname", "fatherLastname")
             .addSelect("dental.date", "date")
             .innerJoin("dental.User", "user")
+            .where("user.rut = :rut", { rut: users[i].rut })
             .orderBy("dental.date", "DESC")
             .getRawMany();
-        res.status(200).json(Treatment_Date);
+            history.push(dental);
+        }
+        res.status(200).json({history});
     } catch (error) {
         if (error instanceof Error) {
             console.log(error.message);

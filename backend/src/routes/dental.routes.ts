@@ -9,10 +9,8 @@ import {
     getTreatmentsByUser,
     updateDental,
     getSummaryTreatmentById,
-    getSummaryTreatment,
-    getHistory,
-    getTreatmentsById,
 } from "../controllers/dental.controller";
+import { getTreatments } from "../controllers/treatment.controller";
 
 const router = Router();
 
@@ -22,10 +20,10 @@ router.post("/dental", createDental);
 router.put("/dental/:id", updateDental);
 router.delete("/dental/:id", deleteDental);
 
-router.get("/dental/report/:rut", getDentalByUser);
-router.get("/dental/report/treatments/:rut", getTreatmentsByUser);
-router.get("/dental/report/history/:rut", getHistoryByUser);
-router.get("/dental/report/summary/:id", getSummaryTreatmentById);
+router.get("/dental/report/:rut", getDentalByUser);// Atencion Dental reporte completo por paciente
+router.get("/dental/report/treatments/:rut", getTreatmentsByUser); //Tratamientos por usuario
+router.get("/dental/report/history/:rut", getHistoryByUser);//Historial de citas por usuario
+router.get("/dental/report/summary/:id", getSummaryTreatmentById);//Reporte de cantidad de tratamientos por id
 
 
 export default router;
