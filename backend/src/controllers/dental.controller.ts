@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { Dental } from "../models/dental.entity";
 import { User } from "../models/user.entity";
-import { Treatment } from '../models/treatment.entity';
+import { Treatment } from "../models/treatment.entity";
 
 export const createDental = async (req: Request, res: Response) => {
     try {
@@ -137,8 +137,8 @@ export const getTreatmentsByUser = async (req: Request, res: Response) => {
     try {
         //Get treatments by user using rut as parameter in the url, and send Nombre, Apellido, Nombre del tratamiento, Fecha to the frontend
         //Usign getRepository we can use the query builder to make the query
-        
-        const rut = (req.params.rut);
+
+        const rut = req.params.rut;
         const Treatment_User = await Dental.createQueryBuilder("dental")
             .select("user.name", "name")
             .addSelect("user.fatherLastname", "fatherLastname")
@@ -147,9 +147,231 @@ export const getTreatmentsByUser = async (req: Request, res: Response) => {
             .innerJoin("dental.User", "user")
             .innerJoin("dental.Treatment", "treatment")
             .where("user.rut = :rut", { rut: rut })
-            .getRawMany(); 
+            .getRawMany();
         res.status(200).json(Treatment_User);
+    } catch (error) {
+        if (error instanceof Error) {
+            console.log(error.message);
+            res.status(500).json({ message: "Something goes wrong" });
+        } else {
+            res.status(500).json({ message: "Something goes wrong" });
+        }
+    }
+};
 
+export const getTreatmentsByDate = async (req: Request, res: Response) => {
+    try {
+        //Get treatments by date using date as parameter in the url, and send Nombre, Apellido, Nombre del tratamiento, Fecha to the frontend
+        //Usign getRepository we can use the query builder to make the query
+        const date =
+            req.body.date instanceof Date
+                ? req.body.date
+                : new Date(req.body.date);
+        const Treatment_Date = await Dental.createQueryBuilder("dental")
+            .select("user.name", "name")
+            .addSelect("user.fatherLastname", "fatherLastname")
+            .addSelect("treatment.name", "nameTreatment")
+            .addSelect("dental.date", "date")
+            .innerJoin("dental.User", "user")
+            .innerJoin("dental.Treatment", "treatment")
+            .where("dental.date = :date", { date: date })
+            .getRawMany();
+        res.status(200).json(Treatment_Date);
+    } catch (error) {
+        if (error instanceof Error) {
+            console.log(error.message);
+            res.status(500).json({ message: "Something goes wrong" });
+        } else {
+            res.status(500).json({ message: "Something goes wrong" });
+        }
+    }
+};
+
+export const getTreatments = async (req: Request, res: Response) => {
+    try {
+        //Get treatments for every user, and send Nombre, Apellido, Nombre del tratamiento, Fecha to the frontend
+        //Usign getRepository we can use the query builder to make the query
+        const Treatment = await Dental.createQueryBuilder("dental")
+            .select("user.name", "name")
+            .addSelect("user.fatherLastname", "fatherLastname")
+            .addSelect("treatment.name", "nameTreatment")
+            .addSelect("dental.date", "date")
+            .innerJoin("dental.User", "user")
+            .innerJoin("dental.Treatment", "treatment")
+            .addGroupBy("dental.date")
+            .getRawMany();
+        res.status(200).json(Treatment);
+    } catch (error) {
+        if (error instanceof Error) {
+            console.log(error.message);
+
+            res.status(500).json({ message: "Something goes wrong" });
+        } else {
+            res.status(500).json({ message: "Something goes wrong" });
+        }
+    }
+};
+
+export const getHistoryByUser = async (req: Request, res: Response) => {
+    //Get history aka all dental but order by date using rut as parameter in the url, and send Nombre, Apellido, Nombre del tratamiento, Fecha to the frontend
+    //Usign getRepository we can use the query builder to make the query
+    try {
+        const rut = req.params.rut;
+        const Treatment_User = await Dental.createQueryBuilder("dental")
+            .select("user.name", "name")
+            .addSelect("user.fatherLastname", "fatherLastname")
+            .addSelect("treatment.name", "nameTreatment")
+            .addSelect("dental.date", "date")
+            .innerJoin("dental.User", "user")
+            .where("user.rut = :rut", { rut: rut })
+            .orderBy("dental.date", "DESC")
+            .getRawMany();
+        res.status(200).json(Treatment_User);
+    } catch (error) {
+        if (error instanceof Error) {
+            console.log(error.message);
+            res.status(500).json({ message: "Something goes wrong" });
+        } else {
+            res.status(500).json({ message: "Something goes wrong" });
+        }
+    }
+};
+
+export const getHistoryByDate = async (req: Request, res: Response) => {
+    //Get history aka all dental but order by date using date as parameter in the url, and send Nombre, Apellido, Nombre del tratamiento, Fecha to the frontend
+    //Usign getRepository we can use the query builder to make the query
+    try {
+        const date =
+            req.body.date instanceof Date
+                ? req.body.date
+                : new Date(req.body.date);
+        const Treatment_Date = await Dental.createQueryBuilder("dental")
+            .select("user.name", "name")
+            .addSelect("user.fatherLastname", "fatherLastname")
+            .addSelect("treatment.name", "nameTreatment")
+            .addSelect("dental.date", "date")
+            .innerJoin("dental.User", "user")
+            .where("dental.date = :date", { date: date })
+            .orderBy("dental.date", "DESC")
+            .getRawMany();
+        res.status(200).json(Treatment_Date);
+    } catch (error) {
+        if (error instanceof Error) {
+            console.log(error.message);
+            res.status(500).json({ message: "Something goes wrong" });
+        } else {
+            res.status(500).json({ message: "Something goes wrong" });
+        }
+    }
+};
+
+export const getHistory = async (req: Request, res: Response) => {
+    //Get history aka all dental but order by date, and send Nombre, Apellido, Nombre del tratamiento, Fecha to the frontend
+    //Usign getRepository we can use the query builder to make the query
+    try {
+        const Treatment_Date = await Dental.createQueryBuilder("dental")
+            .select("user.name", "name")
+            .addSelect("user.fatherLastname", "fatherLastname")
+            .addSelect("treatment.name", "nameTreatment")
+            .addSelect("dental.date", "date")
+            .innerJoin("dental.User", "user")
+            .orderBy("dental.date", "DESC")
+            .getRawMany();
+        res.status(200).json(Treatment_Date);
+    } catch (error) {
+        if (error instanceof Error) {
+            console.log(error.message);
+            res.status(500).json({ message: "Something goes wrong" });
+        } else {
+            res.status(500).json({ message: "Something goes wrong" });
+        }
+    }
+};
+
+export const getDentalByUser = async (req: Request, res: Response) => {
+    try {
+        //Get dental by user using rut as parameter in the url, and send Nombre, Apellido, Nombre del tratamiento, Fecha to the frontend
+        //Usign getRepository we can use the query builder to make the query
+        const rut = req.params.rut;
+        const Treatment_User = await Dental.createQueryBuilder("dental")
+            .select("user.name", "name")
+            .addSelect("user.fatherLastname", "fatherLastname")
+            .addSelect("treatment.name", "nameTreatment")
+            .addSelect("dental.date", "date")
+            .innerJoin("dental.User", "user")
+            .where("user.rut = :rut", { rut: rut })
+            .getRawMany();
+        res.status(200).json(Treatment_User);
+    } catch (error) {
+        if (error instanceof Error) {
+            console.log(error.message);
+            res.status(500).json({ message: "Something goes wrong" });
+        } else {
+            res.status(500).json({ message: "Something goes wrong" });
+        }
+    }
+};
+
+export const getSummaryTreatmentById = async (req: Request, res: Response) => {
+    //This count the total aparitions of a treatment in the dental table
+    try {
+        const id = req.params.id;
+        const Treatment_User = await Dental.createQueryBuilder("dental")
+            .select("treatment.name", "nameTreatment")
+            .addSelect("COUNT(*)", "total")
+            .innerJoin("dental.Treatment", "treatment")
+            .where("treatment.id = :id", { id: id })
+            .groupBy("treatment.name")
+            .getRawMany();
+        res.status(200).json(Treatment_User);
+    } catch (error) {
+        if (error instanceof Error) {
+            console.log(error.message);
+            res.status(500).json({ message: "Something goes wrong" });
+        } else {
+            res.status(500).json({ message: "Something goes wrong" });
+        }
+    }
+};
+
+export const getSummaryTreatment = async (req: Request, res: Response) => {
+    //get all treatments and count the total aparitions of each treatment in the dental table
+    try {
+        const Treatment_User = await Dental.createQueryBuilder("dental")
+            .select("treatment.name", "nameTreatment")
+            .addSelect("COUNT(*)", "total")
+            .innerJoin("dental.Treatment", "treatment")
+            .groupBy("treatment.name")
+            .getRawMany();
+        res.status(200).json(Treatment_User);
+    } catch (error) {
+        if (error instanceof Error) {
+            console.log(error.message);
+            res.status(500).json({ message: "Something goes wrong" });
+        } else {
+            res.status(500).json({ message: "Something goes wrong" });
+        }
+    }
+};
+
+export const getSummaryTreatmentByDate = async (
+    req: Request,
+    res: Response
+) => {
+    //get all treatments and count the total aparitions of each treatment in the dental table
+    try {
+        const date =
+            req.body.date instanceof Date
+                ? req.body.date
+                : new Date(req.body.date);
+        const Treatment_User = await Dental.createQueryBuilder("dental")
+            .select("treatment.name", "nameTreatment")
+            .addSelect("COUNT(*)", "total")
+            .innerJoin("dental.Treatment", "treatment")
+            .where("dental.date = :date", { date: date })
+            .groupBy("treatment.name")
+            .getRawMany();
+        res.status(200).json(Treatment_User);
     } catch (error) {
         if (error instanceof Error) {
             console.log(error.message);
