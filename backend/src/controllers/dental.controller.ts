@@ -76,12 +76,15 @@ export const updateDental = async (req: Request, res: Response) => {
         const id = parseInt(req.params.id);
         const dental = await Dental.findOneBy({ id: id });
         if (dental) {
-            const { rut, idTreatment, description, amount } = req.body;
-            const date : Date = new Date();
+            const { rut, idTreatment, description, amount, date } = req.body;
             const user = await User.findOneBy({ rut: rut });
             const treatment = await Treatment.findOneBy({ id: idTreatment });
             if( user && treatment){
-                dental.date = date;
+                if(date instanceof Date){
+                    dental.date = date;
+                }else{
+                    dental.date = new Date(date);
+                }
                 dental.description = description;
                 dental.amount = amount;
                 dental.User = user;
